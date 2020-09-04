@@ -53,7 +53,7 @@ def token_required(f):
    return decorator
 
 
-@app.route('/register', methods=['GET', 'POST'])
+@app.route('/register', methods=['POST'])
 def signup_user():
  data = request.get_json()
 
@@ -82,7 +82,7 @@ def login_user():
   return make_response('could not verify',  401, {'WWW.Authentication': 'Basic realm: "login required"'})
 
 
-@app.route('/users', methods=['GET','POST'])
+@app.route('/users', methods=['GET'])
 @token_required
 def get_all_users():
    users = Users.query.all()
